@@ -96,9 +96,9 @@ for file_path in files:
 
      
     windowSpec = Window.orderBy(F.monotonically_increasing_id())
-    df = df.withColumn("index", F.row_number().over(windowSpec) - 1 + global_index)
+    filled_data = filled_data.withColumn("index", F.row_number().over(windowSpec) - 1 + global_index)
     global_index += df.count()
-    casted_df = (df
+    casted_df = (filled_data
              .withColumn('VendorID', col('vendorID').cast(IntegerType()))
              .withColumn('passenger_count', col('passenger_count').cast(IntegerType()))
              .withColumn('trip_distance', col('trip_distance').cast(FloatType()))
