@@ -13,10 +13,10 @@ spark = SparkSession.builder \
     .appName("TransformAndLoadData") \
     .getOrCreate()
 
-source_bucket = "nyc_taxi_project_pc"
-source_prefix = "raw_nyc_taxi_data/"
-destination_bucket = "nyc_taxi_project_pc"
-destination_prefix = "transformed_nyc_taxi_data/"
+source_bucket = "nyc_yellow_taxi_project"
+source_prefix = "raw_nyc_yellow_taxi_data/"
+destination_bucket = "nyc_yellow_taxi_project"
+destination_prefix = "transformed_nyc_yellow_taxi_data/"
 
 def list_files(bucket_name, prefix=""):
     storage_client = storage.Client()
