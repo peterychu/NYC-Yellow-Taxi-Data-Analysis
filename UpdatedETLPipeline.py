@@ -9,6 +9,10 @@ from pyspark.sql import functions as F
 from pyspark.sql.functions import col
 from pyspark.sql.types import IntegerType, FloatType
 
+spark = SparkSession.builder \
+    .appName("TransformAndLoadData") \
+    .getOrCreate()
+
 source_bucket = "nyc_yellow_taxi_project"
 source_prefix = "raw_nyc_yellow_taxi_data/"
 destination_bucket = "nyc_yellow_taxi_project"
