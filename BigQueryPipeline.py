@@ -252,7 +252,7 @@ for batch_number in batch_numbers:
     # max_seconds = 0
     try:
         start_time = time.time()
-        run_pipeline('nyc-taxi-project-423502', 'nyc_taxi_project_pc', 'transformed_nyc_taxi_data', 'nyc_pipeline_test',batch_number)
+        run_pipeline('nyc-yellow-taxi-data-project', 'nyc_yellow_taxi_project', 'transformed_nyc_yellow_taxi_data', 'initial_testing_pipeline_upload',batch_number)
         end_time = time.time()
         batch_time = end_time - start_time
         minutes, seconds = divmod(batch_time, 60)
@@ -263,8 +263,8 @@ for batch_number in batch_numbers:
         #     max_minutes = minutes
         #     max_seconds = seconds
 
-    except:
-        print(f'''batch {batch_number} failed''')
+    except Exception as e:
+        print(f'''batch {batch_number} failed: {e}''')
         break
 
 # total_hours, remainder = divmod(total_time_taken, 3600)
@@ -272,5 +272,4 @@ for batch_number in batch_numbers:
 # avg_minutes, avg_seconds = divmod(total_time_taken, 60)
 # print(f'''all batches took {total_hours} hours {total_minutes} minutes {total_seconds} seconds''')
 # print(f'''average batch time was {avg_minutes} minutes {avg_seconds} seconds''')
-
 
