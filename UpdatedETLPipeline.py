@@ -94,6 +94,16 @@ for file_path in files:
         "airport_fee": avg_airport_fee
     })
 
+    paid_payment_types = [1,2]
+    unpaid_payment_types = [3,4,5,6]  
+
+    filled_data = filled_data.withColumn(
+        "payment_type", 
+        F.when(F.col("payment_type").isin(paid_payment_types), 1)
+        .otherwise(0)
+    )
+
+
      
     windowSpec = Window.orderBy(F.monotonically_increasing_id())
     filled_data = filled_data.withColumn("index", F.row_number().over(windowSpec) - 1 + global_index)
